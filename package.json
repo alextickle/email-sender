@@ -9,8 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "path": "^0.12.7",
+    "pg": "^7.3.0",
+    "pushid": "^1.0.0",
     "sequelize": "^4.8.4"
   }
 }

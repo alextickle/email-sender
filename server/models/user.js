@@ -3,7 +3,7 @@ const pushid = require('pushid');
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define('User', {
     id: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
       allowNull: false,
       autoIncrement: false,
       defaultValue: () => pushid(),

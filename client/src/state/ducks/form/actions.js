@@ -66,6 +66,7 @@ export const send = (e, subject, to, from, content, user_id) => {
       .then(res => {
         if (res.ok) {
           dispatch(sendSuccess());
+          dispatch(reset());
         } else {
           dispatch(sendFailure(res.error));
         }

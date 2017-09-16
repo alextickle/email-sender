@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
+const Message = require('./models').Message;
+const User = require('./models').User;
 
 app.set('port', process.env.PORT || 5000);
+app.use(bodyParser.json());
 
 app.post('/login', (request, response) =>
   User.findOne({
