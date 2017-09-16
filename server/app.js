@@ -56,15 +56,13 @@ app.post('/create-message', (request, response) => {
   sgMail
     .send(msg)
     .then(resp => {
-      console.log('creating');
-      Message.create(request.body);
+      return Message.create(request.body);
     })
     .then(message => {
       response.status(200);
       response.json({ message: message });
     })
     .catch(error => {
-      console.log('ERROR: ', error);
       response.status(400);
       response.json({ errors: error.errors });
     });

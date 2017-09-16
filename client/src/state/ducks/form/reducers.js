@@ -4,7 +4,8 @@ const initialState = {
   loading: false,
   message: '',
   name: '',
-  email: ''
+  email: '',
+  status: ''
 };
 
 const form = (state = initialState, action) => {
@@ -17,18 +18,25 @@ const form = (state = initialState, action) => {
       });
     case types.SEND_SUCCESS:
       return Object.assign({}, state, {
-        loading: false
+        loading: false,
+        status: 'Message sent'
       });
     case types.SEND_FAILURE:
       return Object.assign({}, state, {
-        loading: false
+        loading: false,
+        status: 'Failed to send'
       });
     case types.HANDLE_CHANGE:
       fieldName = action.field;
       temp[fieldName] = action.value;
       return Object.assign({}, state, temp);
     case types.RESET:
-      return initialState;
+      return Object.assign({}, state, {
+        loading: false,
+        message: '',
+        name: '',
+        email: ''
+      });
     default:
       return state;
   }

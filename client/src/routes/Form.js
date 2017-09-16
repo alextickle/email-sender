@@ -38,6 +38,7 @@ const Form = props => (
       />
       <input type="submit" value="Submit" />
     </form>
+    {props.status}
     <Link to="/messages">
       <button onClick={props.getMessages}>View Messages</button>
     </Link>

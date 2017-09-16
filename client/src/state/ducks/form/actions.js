@@ -50,7 +50,7 @@ export const send = (e, data) => {
         error => console.log('An error occured.', error)
       )
       .then(res => {
-        if (res.ok) {
+        if (res.message) {
           dispatch(sendSuccess());
           dispatch(reset());
         } else {

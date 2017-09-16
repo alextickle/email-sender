@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   email: state.form.email,
   message: state.form.message,
   name: state.form.name,
+  status: state.form.status,
   userEmail: state.user.email
 });
 
