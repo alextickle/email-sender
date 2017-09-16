@@ -1,6 +1,8 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import LoginContainer from '../containers/LoginContainer';
+import FormContainer from '../containers/FormContainer';
+import MessagesContainer from '../containers/MessagesContainer';
 
 const Main = props => (
   <div>

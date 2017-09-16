@@ -6,7 +6,13 @@ const Form = props => (
     <div>Form</div>
     <form
       onSubmit={e =>
-        props.send(e, props.name, props.email, props.userEmail, props.message)}
+        props.send(e, {
+          subject: props.name,
+          sender: props.userEmail,
+          recipient: props.email,
+          content: props.message,
+          user_id: props.user_id
+        })}
     >
       <input
         placeholder="name"

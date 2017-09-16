@@ -1,7 +1,6 @@
 import types from './types';
-const sgMail = require('@sendgrid/mail');
 const apiUrl =
-  process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:4000/';
+  process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:5000/';
 
 export const handleChange = e => {
   return {
@@ -19,44 +18,31 @@ export const reset = () => {
 
 export const initSend = () => {
   return {
-    type: types.INIT_LOGIN
+    type: types.INIT_SEND
   };
 };
 
 export const sendSuccess = () => {
   return {
-    type: types.LOGIN_SUCCESS
+    type: types.SEND_SUCCESS
   };
 };
 
 export const sendFailure = error => {
   return {
-    type: types.LOGIN_FAILURE,
+    type: types.SEND_FAILURE,
     error: error
   };
 };
 
-export const send = (e, subject, to, from, content, user_id) => {
+export const send = (e, data) => {
   e.preventDefault();
   return dispatch => {
     dispatch(initSend());
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const msg = {
-      to: to
-      from: from,
-      subject: subject
-      text: content
-    };
-    sgMail.send(msg);
     const params = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        recipient: to,
-        subject,
-        content,
-        user_id
-      })
+      body: JSON.stringify(data)
     };
     return fetch(`${apiUrl}create-message`, params)
       .then(

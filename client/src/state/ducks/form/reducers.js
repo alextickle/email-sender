@@ -27,7 +27,7 @@ const form = (state = initialState, action) => {
       fieldName = action.field;
       temp[fieldName] = action.value;
       return Object.assign({}, state, temp);
-    case: types.RESET:
+    case types.RESET:
       return initialState;
     default:
       return state;

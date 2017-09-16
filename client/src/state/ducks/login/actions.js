@@ -1,7 +1,7 @@
 import types from './types';
 import { setUser } from '../user/actions';
 const apiUrl =
-  process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:4000/';
+  process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:5000/';
 
 export const handleChange = e => {
   return {
@@ -54,8 +54,8 @@ export const login = (e, email, password) => {
         error => console.log('An error occured.', error)
       )
       .then(res => {
-        if (res.ok) {
-          dispatch(setUser(res.user.id));
+        if (res.user) {
+          dispatch(setUser(res.user.id, res.user.email));
           dispatch(loginSuccess());
           dispatch(reset());
         } else {

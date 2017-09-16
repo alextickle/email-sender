@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const messages = (state = initialState, action) => {
-  let temp = {};
   switch (action.type) {
     case types.INIT_FETCH_MESSAGES:
       return Object.assign({}, state, {

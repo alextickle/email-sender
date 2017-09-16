@@ -19,6 +19,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: ''
     },
+    sender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: ''
+    },
     subject: {
       type: DataTypes.STRING,
       allowNull: false,

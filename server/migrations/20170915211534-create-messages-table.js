@@ -10,6 +10,9 @@ module.exports = {
       content: {
         type: Sequelize.STRING
       },
+      sender: {
+        type: Sequelize.STRING
+      },
       recipient: {
         type: Sequelize.STRING
       },
