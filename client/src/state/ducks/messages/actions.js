@@ -34,7 +34,7 @@ export const fetchMessages = id => {
         error => console.log('An error occured.', error)
       )
       .then(res => {
-        if (res.ok) {
+        if (res.messages) {
           dispatch(setMessages(res.messages));
           dispatch(fetchMessagesSuccess());
         } else {

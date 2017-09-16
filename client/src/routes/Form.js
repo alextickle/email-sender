@@ -40,7 +40,9 @@ const Form = props => (
     </form>
     {props.status}
     <Link to="/messages">
-      <button onClick={props.getMessages}>View Messages</button>
+      <button onClick={() => props.fetchMessages(props.id)}>
+        View Messages
+      </button>
     </Link>
     <button onClick={props.logout}>Logout</button>
   </div>
