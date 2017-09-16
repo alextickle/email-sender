@@ -9,7 +9,21 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: () => pushid(),
       primaryKey: true
     },
-    content: DataTypes.STRING
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: ''
+    },
+    recipient: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: ''
+    },
+    subject: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: ''
+    }
   });
 
   Message.associate = models => {

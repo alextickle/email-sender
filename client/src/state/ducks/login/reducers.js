@@ -1,11 +1,10 @@
 import types from './types';
 
 const initialState = {
-  isFetching: false,
+  loading: false,
   email: '',
   password: '',
-  errors: {},
-  userId: ''
+  errors: {}
 };
 
 const login = (state = initialState, action) => {
@@ -13,15 +12,15 @@ const login = (state = initialState, action) => {
   switch (action.type) {
     case types.INIT_LOGIN:
       return Object.assign({}, state, {
-        isFetching: true
+        loading: true
       });
     case types.LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        isFetching: false
+        loading: false
       });
     case types.LOGIN_FAILURE:
       return Object.assign({}, state, {
-        isFetching: false,
+        loading: false,
         errors: action.errors
       });
     case types.HANDLE_CHANGE:
@@ -32,6 +31,8 @@ const login = (state = initialState, action) => {
         userId: action.userId,
         userEmail: action.userEmail
       });
+    case types.RESET:
+      return initialState;
     default:
       return state;
   }

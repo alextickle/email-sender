@@ -11,6 +11,12 @@ export const handleChange = e => {
   };
 };
 
+export const reset = () => {
+  return {
+    type: types.RESET
+  };
+};
+
 export const initSend = () => {
   return {
     type: types.INIT_LOGIN
@@ -30,7 +36,7 @@ export const sendFailure = error => {
   };
 };
 
-export const send = (e, name, to, from, message) => {
+export const send = (e, subject, to, from, content, user_id) => {
   e.preventDefault();
   return dispatch => {
     dispatch(initSend());
@@ -38,17 +44,18 @@ export const send = (e, name, to, from, message) => {
     const msg = {
       to: to
       from: from,
-      subject: name
-      text: message
+      subject: subject
+      text: content
     };
     sgMail.send(msg);
     const params = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name,
-        email,
-        message
+        recipient: to,
+        subject,
+        content,
+        user_id
       })
     };
     return fetch(`${apiUrl}create-message`, params)
@@ -68,6 +75,7 @@ export const send = (e, name, to, from, message) => {
 
 export default {
   handleChange,
+  reset,
   initSend,
   sendSuccess,
   sendFailure,

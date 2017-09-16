@@ -1,4 +1,5 @@
 import types from './types';
+import { setUser } from '../user/actions';
 const apiUrl =
   process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:4000/';
 
@@ -7,6 +8,12 @@ export const handleChange = e => {
     type: types.HANDLE_CHANGE,
     field: e.target.name,
     value: e.target.value
+  };
+};
+
+export const reset = () => {
+  return {
+    type: types.RESET
   };
 };
 
@@ -50,6 +57,7 @@ export const login = (e, email, password) => {
         if (res.ok) {
           dispatch(setUser(res.user.id));
           dispatch(loginSuccess());
+          dispatch(reset());
         } else {
           dispatch(loginFailure(res.error));
         }
@@ -57,19 +65,11 @@ export const login = (e, email, password) => {
   };
 };
 
-export const setUser = (id, email) => {
-  return {
-    type: types.SET_USER,
-    userId: id,
-    userEmail: email
-  };
-};
-
 export default {
   handleChange,
+  reset,
   initLogin,
   loginSuccess,
   loginFailure,
-  login,
-  setUser
+  login
 };

@@ -9,19 +9,18 @@ const Main = props => (
         <Route
           exact
           path="/"
-          render={() => (props.userId ? <FormContainer /> : <LoginContainer />)}
+          render={() => (props.id ? <FormContainer /> : <LoginContainer />)}
         />
         <Route
           exact
           path="/form"
-          render={() =>
-            props.userId ? <FormContainer /> : <Redirect to="/" />}
+          render={() => (props.id ? <FormContainer /> : <Redirect to="/" />)}
         />
         <Route
           exact
           path="/messages"
           render={() =>
-            props.userId ? <MessagesContainer /> : <Redirect to="/" />}
+            props.id ? <MessagesContainer /> : <Redirect to="/" />}
         />
         <Route exact path="/404" render={() => <h1>Page Not Found</h1>} />
       </Switch>

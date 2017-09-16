@@ -35,6 +35,7 @@ const Form = props => (
     <Link to="/messages">
       <button onClick={props.getMessages}>View Messages</button>
     </Link>
+    <button onClick={props.logout}>Logout</button>
   </div>
 );
 

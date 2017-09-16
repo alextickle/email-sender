@@ -22,10 +22,7 @@ app.post('/login', (request, response) =>
 );
 
 app.post('/create-message', (request, response) =>
-  Message.create({
-    content: request.body.content,
-    user_id: request.body.user_id
-  })
+  Message.create(request.body)
     .then(message => {
       response.status(200);
       response.json({ message: 'success', message: message });
@@ -39,7 +36,7 @@ app.post('/create-message', (request, response) =>
 app.get('/messages/:id', (request, response) =>
   Message.findAll({
     where: {
-      user_id: params.match.id
+      user_id: request.params.id
     }
   })
     .then(messages => {

@@ -1,7 +1,7 @@
 import types from './types';
 
 const initialState = {
-  isFetching: false,
+  loading: false,
   message: '',
   name: '',
   email: ''
@@ -13,20 +13,22 @@ const form = (state = initialState, action) => {
   switch (action.type) {
     case types.INIT_SEND:
       return Object.assign({}, state, {
-        isFetching: true
+        loading: true
       });
     case types.SEND_SUCCESS:
       return Object.assign({}, state, {
-        isFetching: false
+        loading: false
       });
     case types.SEND_FAILURE:
       return Object.assign({}, state, {
-        isFetching: false
+        loading: false
       });
     case types.HANDLE_CHANGE:
       fieldName = action.field;
       temp[fieldName] = action.value;
       return Object.assign({}, state, temp);
+    case: types.RESET:
+      return initialState;
     default:
       return state;
   }

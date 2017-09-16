@@ -3,6 +3,7 @@ const LOGIN_SUCCESS = 'login/LOGIN_SUCCESS';
 const LOGIN_FAILURE = 'login/LOGIN_FAILURE';
 const LOGIN = 'login/LOGIN';
 const HANDLE_CHANGE = 'login/HANDLE_CHANGE';
+const RESET = 'login/RESET';
 const SET_USER = 'login/SET_USER';
 
 export default {
@@ -11,5 +12,6 @@ export default {
   LOGIN_FAILURE,
   LOGIN,
   HANDLE_CHANGE,
+  RESET,
   SET_USER
 };
