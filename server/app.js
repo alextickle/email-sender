@@ -6,6 +6,7 @@ const Message = require('./models').Message;
 const User = require('./models').User;
 const cors = require('cors');
 const sgMail = require('@sendgrid/mail');
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -18,7 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.set('port', process.env.PORT || 5000);
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.use(bodyParser.json());
 
 app.post('/login', (request, response) =>
@@ -44,7 +45,6 @@ app.post('/login', (request, response) =>
 
 app.post('/create-message', (request, response) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  console.log(request.body);
   const msg = {
     to: request.body.recipient,
     from: request.body.sender,
@@ -52,7 +52,6 @@ app.post('/create-message', (request, response) => {
     text: request.body.content,
     html: `<p>${request.body.content}</p>`
   };
-  console.log('msg', msg);
   sgMail
     .send(msg)
     .then(resp => {
@@ -88,6 +87,4 @@ app.get('*', (request, response) =>
   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'))
 );
 
-app.listen(app.get('port'), () =>
-  console.log('Node app is running on port', app.get('port'))
-);
+app.listen(PORT, () => console.log(`listening on port ${PORT}!`));
