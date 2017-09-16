@@ -6,7 +6,8 @@ const mapStateToProps = state => ({
   isFetching: state.form.isFetching,
   email: state.form.email,
   message: state.form.message,
-  name: state.form.name
+  name: state.form.name,
+  userEmail: state.login.userEmail
 });
 
 const mapDispatchToProps = {

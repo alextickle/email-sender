@@ -29,7 +29,8 @@ const login = (state = initialState, action) => {
       return Object.assign({}, state, temp);
     case types.SET_USER:
       return Object.assign({}, state, {
-        userId: action.userId
+        userId: action.userId,
+        userEmail: action.userEmail
       });
     default:
       return state;

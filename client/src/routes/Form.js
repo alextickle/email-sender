@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Form = props => (
   <div>
     <div>Form</div>
-    <form onSubmit={e => props.send(e, props.name, props.email, props.message)}>
+    <form
+      onSubmit={e =>
+        props.send(e, props.name, props.email, props.userEmail, props.message)}
+    >
       <input
         placeholder="name"
         type="text"
@@ -28,6 +32,9 @@ const Form = props => (
       />
       <input type="submit" value="Submit" />
     </form>
+    <Link to="/messages">
+      <button onClick={props.getMessages}>View Messages</button>
+    </Link>
   </div>
 );
 

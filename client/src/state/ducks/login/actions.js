@@ -57,10 +57,11 @@ export const login = (e, email, password) => {
   };
 };
 
-export const setUser = id => {
+export const setUser = (id, email) => {
   return {
     type: types.SET_USER,
-    userId: id
+    userId: id,
+    userEmail: email
   };
 };
 

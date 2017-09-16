@@ -1,7 +1,6 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import LoginContainer from '../containers/LoginContainer';
-import HomeContainer from '../containers/HomeContainer';
 
 const Main = props => (
   <div>
@@ -10,19 +9,21 @@ const Main = props => (
         <Route
           exact
           path="/"
-          render={() => (props.user ? <HomeContainer /> : <LoginContainer />)}
+          render={() => (props.userId ? <FormContainer /> : <LoginContainer />)}
         />
         <Route
           exact
-          path="/home"
-          render={() => (props.user ? <HomeContainer /> : <Redirect to="/" />)}
-        />
-        <Route
-          exact
-          path="/404"
+          path="/form"
           render={() =>
-            props.user ? <HomeContainer /> : <h1>Page Not Found</h1>}
+            props.userId ? <FormContainer /> : <Redirect to="/" />}
         />
+        <Route
+          exact
+          path="/messages"
+          render={() =>
+            props.userId ? <MessagesContainer /> : <Redirect to="/" />}
+        />
+        <Route exact path="/404" render={() => <h1>Page Not Found</h1>} />
       </Switch>
     </main>
   </div>
