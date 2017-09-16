@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import loginOperations from '../state/ducks/login/operations';
 
 const mapStateToProps = state => ({
-  user: state.login.user
+  userId: state.login.userId
 });
 
 const mapDispatchToProps = {};

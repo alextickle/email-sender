@@ -3,15 +3,10 @@ import React from 'react';
 const Login = props => (
   <div>
     <div>Log In</div>
-    <form
-      className="form"
-      onSubmit={e => {
-        e.preventDefault();
-        props.login().then(resp => props.setUser(resp.email));
-      }}
-    >
+    <form onSubmit={e => props.login(e, props.email, props.password)}>
       <input
         placeholder="email address"
+        type="text"
         name="email"
         value={props.email}
         onChange={props.handleChange}

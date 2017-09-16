@@ -10,65 +10,57 @@ export const handleChange = e => {
   };
 };
 
-export const initLogin = () => {
+export const initSend = () => {
   return {
     type: types.INIT_LOGIN
   };
 };
 
-export const loginSuccess = () => {
+export const sendSuccess = () => {
   return {
     type: types.LOGIN_SUCCESS
   };
 };
 
-export const loginFailure = error => {
+export const sendFailure = error => {
   return {
     type: types.LOGIN_FAILURE,
     error: error
   };
 };
 
-export const login = (e, email, password) => {
+export const send = (e, name, email, message) => {
   e.preventDefault();
   return dispatch => {
-    dispatch(initLogin());
+    dispatch(initSend());
     const params = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        name,
         email,
-        password
+        message
       })
     };
-    return fetch(`${apiUrl}login`, params)
+    return fetch(`${apiUrl}create-message`, params)
       .then(
         response => response.json(),
         error => console.log('An error occured.', error)
       )
       .then(res => {
         if (res.ok) {
-          dispatch(setUser(res.user.id));
-          dispatch(loginSuccess());
+          dispatch(sendSuccess());
         } else {
-          dispatch(loginFailure(res.error));
+          dispatch(sendFailure(res.error));
         }
       });
   };
 };
 
-export const setUser = id => {
-  return {
-    type: types.SET_USER,
-    userId: id
-  };
-};
-
 export default {
   handleChange,
-  initLogin,
-  loginSuccess,
-  loginFailure,
-  login,
-  setUser
+  initSend,
+  sendSuccess,
+  sendFailure,
+  send
 };

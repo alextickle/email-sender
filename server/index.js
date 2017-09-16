@@ -36,8 +36,12 @@ app.post('/create-message', (request, response) =>
     })
 );
 
-app.get('/messages', (request, response) =>
-  Message.findAll()
+app.get('/messages/:id', (request, response) =>
+  Message.findAll({
+    where: {
+      user_id: params.match.id
+    }
+  })
     .then(messages => {
       response.status(200);
       response.json({ message: 'success', messages: messages });
