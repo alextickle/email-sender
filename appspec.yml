@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: source
+    destination: /webapps/mkdecision
+  - source: /webapps/mkdecision/server/config/config.example.json
+    destination: /webapps/mkdecision/server/config/config.json
+hooks:
+  AfterInstall:
+    - location: /webapps/mkdecision/scripts/setup.sh
+      timeout: 3600
+  ApplicationStart:
+    - location: /webapps/mkdecision/scripts/start.sh
+      timeout: 3600

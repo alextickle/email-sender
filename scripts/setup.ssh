@@ -1,0 +1,1 @@
+cd ../server && sequelize db:migrate && sequelize db:seed:all && cd ../client && yarn install && yarn build

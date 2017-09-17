@@ -15,9 +15,9 @@
   },
   "production": {
     "username": "postgres",
-    "password": "",
+    "password": "password",
     "database": "mkdecision_prod",
-    "host": "127.0.0.1",
+    "host": "email-sender-db.c1airqyjlafe.us-east-2.rds.amazonaws.com:5432",
     "dialect": "postgres"
   }
 }
