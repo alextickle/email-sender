@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   email: '',
   password: '',
-  errors: {}
+  status: ''
 };
 
 const login = (state = initialState, action) => {
@@ -16,12 +16,13 @@ const login = (state = initialState, action) => {
       });
     case types.LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        loading: false
+        loading: false,
+        status: 'Login successful'
       });
     case types.LOGIN_FAILURE:
       return Object.assign({}, state, {
         loading: false,
-        errors: action.errors
+        status: 'Incorrect username and/or password'
       });
     case types.HANDLE_CHANGE:
       temp[action.field] = action.value;

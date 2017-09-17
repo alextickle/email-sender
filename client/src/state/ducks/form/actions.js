@@ -36,6 +36,7 @@ export const sendFailure = error => {
 };
 
 export const send = (e, data) => {
+  console.log(data);
   e.preventDefault();
   return dispatch => {
     dispatch(initSend());

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../styles';
 
 const Form = props => (
-  <div>
-    <div>Form</div>
+  <div style={styles.base}>
+    <div style={styles.title}>Send Message</div>
     <form
       onSubmit={e =>
         props.send(e, {
@@ -11,40 +12,52 @@ const Form = props => (
           sender: props.userEmail,
           recipient: props.email,
           content: props.message,
-          user_id: props.user_id
+          user_id: props.id
         })}
     >
       <input
-        placeholder="name"
+        placeholder="name / subject"
         type="text"
         name="name"
         value={props.name}
         onChange={props.handleChange}
+        style={styles.input}
       />
+      <br />
       <input
         placeholder="email address"
         name="email"
         type="text"
         value={props.email}
         onChange={props.handleChange}
+        style={styles.input}
       />
-      <input
+      <br />
+      <textarea
         placeholder="message"
-        type="text"
         name="message"
-        type="text"
+        rows={5}
         value={props.message}
         onChange={props.handleChange}
       />
-      <input type="submit" value="Submit" />
+      <br />
+      <div style={styles.status}>{props.status}</div>
+      <div style={styles.submit}>
+        <input style={styles.button} type="submit" value="Submit" />
+      </div>
     </form>
-    {props.status}
-    <Link to="/messages">
-      <button onClick={() => props.fetchMessages(props.id)}>
-        View Messages
-      </button>
-    </Link>
-    <button onClick={props.logout}>Logout</button>
+
+    <div>
+      <Link to="/messages">
+        <button
+          style={styles.button}
+          onClick={() => props.fetchMessages(props.id)}
+        >
+          View Messages
+        </button>
+      </Link>
+      <button onClick={props.logout}>Logout</button>
+    </div>
   </div>
 );
 

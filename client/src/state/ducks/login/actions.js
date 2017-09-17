@@ -59,7 +59,7 @@ export const login = (e, email, password) => {
           dispatch(loginSuccess());
           dispatch(reset());
         } else {
-          dispatch(loginFailure(res.error));
+          dispatch(loginFailure());
         }
       });
   };

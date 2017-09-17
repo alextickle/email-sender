@@ -6,9 +6,9 @@ module.exports = {
         firstName: 'Alex',
         lastName: 'Tickle',
         email: 'alex@testing.com',
-        password: 'password',
-        createdAt: '2017-09-15 14:52:29',
-        updatedAt: '2017-09-15 14:52:29'
+        password: 'mkdecision',
+        createdAt: '2017-09-17 14:52:29',
+        updatedAt: '2017-09-17 14:52:29'
       }
     ]),
   down: (queryInterface, Sequelize) =>
