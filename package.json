@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js",
-    "heroku-postbuild": "cd server && cp config/config.json.prod config/config.json && sequelize db:migrate && sequelize db:seed:all && cd .. && cd client && yarn install && yarn build"
+    "//":
+      "on initial deploy use 'sequelize db:migrate && sequelize db:seed:all'",
+    "heroku-postbuild":
+      "cd server && cp config/config.json.prod config/config.json && cd .. && cd client && yarn install && yarn build"
   },
   "author": "",
   "license": "ISC",
